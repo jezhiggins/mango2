@@ -1,4 +1,4 @@
 mango2
 ======
 
-A Java iterator and range library
+A Java iterator and range library.
