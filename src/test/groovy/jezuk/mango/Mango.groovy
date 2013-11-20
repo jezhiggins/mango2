@@ -14,8 +14,20 @@ class MangoTest extends spock.lang.Specification {
       def range = Mango.from(['one', 'two', 'three'])
 
     then:
+      range.hasNext() == true
       range.next() == 'one'
+      range.hasNext() == true
       range.next() == 'two'
+      range.hasNext() == true
       range.next() == 'three'
+      range.hasNext() == false
+  }
+
+  def "MangoRange is an iterator"() {
+    when:
+      def range = Mango.from(['one', 'two', 'three'])
+
+    then:
+      range instanceof Iterator
   }
 }
