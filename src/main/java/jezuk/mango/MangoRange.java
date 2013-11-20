@@ -12,4 +12,8 @@ public class MangoRange<T> implements Iterator<T> {
   public T next() { return iter_.next(); }
   public boolean hasNext() { return iter_.hasNext(); }
   public void remove() { throw new UnsupportedOperationException(); }
+
+  public WhereRange<T> where(final Predicate<T> pred) {
+    return new WhereRange(this, pred);
+  } // where
 } // class MangoRange
