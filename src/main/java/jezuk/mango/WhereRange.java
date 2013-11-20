@@ -25,6 +25,9 @@ public class WhereRange<T> implements Iterator<T> {
   public WhereRange<T> where(final Predicate<T> pred) {
     return new WhereRange(this, pred);
   } // where
+  public <U> SelectRange<T, U> select(final Function<T, U> fn) {
+    return new SelectRange(this, fn);
+  } // where
 
   private T findNext() {
     while (iter_.hasNext()) {

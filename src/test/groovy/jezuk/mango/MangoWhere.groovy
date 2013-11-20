@@ -40,7 +40,5 @@ class MangoWhere extends spock.lang.Specification {
       range.hasNext() == true
       range.next() == 'three'
       range.hasNext() == false
-
   }
-
 }
