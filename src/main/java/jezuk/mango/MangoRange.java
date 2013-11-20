@@ -8,4 +8,6 @@ public class MangoRange<T> {
   MangoRange(final Iterator<T> iterator) {
     iter_ = iterator;
   } // MangoRange
+
+  public T next() { return iter_.next(); }
 } // class MangoRange

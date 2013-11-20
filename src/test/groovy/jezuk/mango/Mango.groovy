@@ -8,4 +8,14 @@ class MangoTest extends spock.lang.Specification {
     then:
       range != null
   }
+
+  def "iterate over a list"() {
+    when:
+      def range = Mango.from(['one', 'two', 'three'])
+
+    then:
+      range.next() == 'one'
+      range.next() == 'two'
+      range.next() == 'three'
+  }
 }
