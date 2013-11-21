@@ -1,8 +1,10 @@
 package jezuk.mango;
 
 import java.util.Iterator;
+import java.util.List;
+import java.util.ArrayList;
 
-public class SelectRange<T, U> implements Iterator<U> {
+public class SelectRange<T, U> implements MangoRange<U> {
   private final Iterator<T> iter_;
   private final Function<T, U> fn_;
 
@@ -16,10 +18,17 @@ public class SelectRange<T, U> implements Iterator<U> {
   public boolean hasNext() { return iter_.hasNext(); }
   public void remove() { throw new UnsupportedOperationException(); }
 
-  public WhereRange<U> where(final Predicate<U> pred) {
+  public MangoRange<U> where(final Predicate<U> pred) {
     return new WhereRange(this, pred);
   } // where
-  public <Y> SelectRange<U, Y> select(final Function<U, Y> fn) {
-    return new SelectRange(this, fn);
+  public <Y> MangoRange<Y> select(final Function<U, Y> fn) {
+    return new SelectRange<U, Y>(this, fn);
   } // where
+
+  public List<U> toList() { return to(new ArrayList<U>()); }
+  public List<U> to(final List<U> list) {
+    while (hasNext())
+      list.add(next());
+    return list;
+  } // to
 } // SelectRange

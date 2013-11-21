@@ -1,22 +1,16 @@
 package jezuk.mango;
 
 import java.util.Iterator;
+import java.util.List;
 
-public class MangoRange<T> implements Iterator<T> {
-  private final Iterator<T> iter_;
+public interface MangoRange<T> extends Iterator<T> {
+  T next();
+  boolean hasNext();
+  void remove();
 
-  MangoRange(final Iterator<T> iterator) {
-    iter_ = iterator;
-  } // MangoRange
+  MangoRange<T> where(final Predicate<T> pred);
+  <U> MangoRange<U> select(final Function<T, U> fn);
 
-  public T next() { return iter_.next(); }
-  public boolean hasNext() { return iter_.hasNext(); }
-  public void remove() { throw new UnsupportedOperationException(); }
-
-  public WhereRange<T> where(final Predicate<T> pred) {
-    return new WhereRange(this, pred);
-  } // where
-  public <U> SelectRange<T, U> select(final Function<T, U> fn) {
-    return new SelectRange(this, fn);
-  } // where
+  public List<T> toList();
+  public List<T> to(List<T> list);
 } // class MangoRange

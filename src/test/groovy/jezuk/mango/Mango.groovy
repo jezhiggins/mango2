@@ -30,4 +30,12 @@ class MangoTest extends spock.lang.Specification {
     then:
       range instanceof Iterator
   }
+
+  def "put back into a list"() {
+    when:
+      def range = Mango.from(['one', 'two', 'three'])
+
+    then:
+      range.toList() == ['one', 'two', 'three']
+  }
 }
