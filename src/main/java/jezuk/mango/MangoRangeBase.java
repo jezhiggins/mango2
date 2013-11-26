@@ -11,7 +11,7 @@ public abstract class MangoRangeBase<T> implements MangoRange<T> {
   public void remove() { throw new UnsupportedOperationException(); }
 
   public MangoRange<T> where(final Predicate<T> pred) {
-    return new WhereRange(this, pred);
+    return new WhereRange<T>(this, pred);
   } // where
   public <U> MangoRange<U> select(final Function<T, U> fn) {
     return new SelectRange<T, U>(this, fn);
