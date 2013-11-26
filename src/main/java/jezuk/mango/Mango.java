@@ -5,5 +5,9 @@ public final class Mango {
     return new StandardRange<T>(source.iterator());
   } // from
 
+  public static <T> MangoRange<T> from(final Generator<T> source) {
+    return new GeneratorRange<T>(source);
+  } // from
+
   private Mango() { }
 } // class Mango
