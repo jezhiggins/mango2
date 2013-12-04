@@ -21,7 +21,10 @@ public abstract class MangoRangeBase<T> implements MangoRange<T> {
   } // take
   public MangoRange<T> takeWhile(final Predicate<T> pred) {
     return new TakeRange<T>(this, pred);
-  }
+  } // takeWhile
+  public MangoRange<T> takeUntil(final Predicate<T> pred) {
+    return takeWhile(Predicates.Not(pred));
+  } // takeUntil
 
 
   public List<T> toList() { return to(new ArrayList<T>()); }
