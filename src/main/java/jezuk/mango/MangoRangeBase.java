@@ -16,11 +16,17 @@ public abstract class MangoRangeBase<T> implements MangoRange<T> {
   public <U> MangoRange<U> select(final Function<T, U> fn) {
     return new SelectRange<T, U>(this, fn);
   } // where
+  public MangoRange<T> take(final int count) {
+    return new TakeRange<T>(this, Predicates.<T>Counter(count));
+  } // take
 
   public List<T> toList() { return to(new ArrayList<T>()); }
   public List<T> to(final List<T> list) {
-    while (hasNext())
-      list.add(next());
+    to(Mango.<T>to(list));
     return list;
+  } // to
+  public void to(final Sink<T> sink) {
+    while (hasNext())
+      sink.put(next());
   } // to
 } // class MangoRange

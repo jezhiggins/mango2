@@ -41,4 +41,22 @@ class MangoWhere extends spock.lang.Specification {
       range.next() == 'three'
       range.hasNext() == false
   }
+
+  def "filter and filter"() {
+    when:
+      def lengthIs3 = new Predicate<String>() {
+        boolean test(String s) { return s.length() == 3; }
+      }
+      def beginsWithT = new Predicate<String>() {
+        boolean test(String s) { return s.charAt(0) == 't'; }
+      }
+      def range = Mango.from(['one', 'two', 'three']).
+                       where(lengthIs3).
+                       where(beginsWithT);
+
+    then:
+      range.hasNext() == true
+      range.next() == 'two'
+      range.hasNext() == false
+  }
 }

@@ -10,7 +10,9 @@ public interface MangoRange<T> extends Iterator<T> {
 
   MangoRange<T> where(final Predicate<T> pred);
   <U> MangoRange<U> select(final Function<T, U> fn);
+  MangoRange<T> take(final int count);
 
   public List<T> toList();
   public List<T> to(List<T> list);
+  public void to(Sink<T> sink);
 } // class MangoRange
