@@ -17,8 +17,12 @@ public abstract class MangoRangeBase<T> implements MangoRange<T> {
     return new SelectRange<T, U>(this, fn);
   } // where
   public MangoRange<T> take(final int count) {
-    return new TakeRange<T>(this, Predicates.<T>Counter(count));
+    return takeWhile(Predicates.<T>Counter(count));
   } // take
+  public MangoRange<T> takeWhile(final Predicate<T> pred) {
+    return new TakeRange<T>(this, pred);
+  }
+
 
   public List<T> toList() { return to(new ArrayList<T>()); }
   public List<T> to(final List<T> list) {
