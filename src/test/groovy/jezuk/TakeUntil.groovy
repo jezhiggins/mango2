@@ -1,4 +1,7 @@
-package jezuk.mango;
+package jezuk
+
+import jezuk.mango.Mango
+import jezuk.mango.Predicate
 
 class TakeUntil extends spock.lang.Specification {
   def "take until 5 from 0"() {

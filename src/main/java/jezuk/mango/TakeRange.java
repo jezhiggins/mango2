@@ -3,7 +3,7 @@ package jezuk.mango;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class TakeRange<T> extends MangoRangeBase<T> {
+class TakeRange<T> extends MangoRangeBase<T> {
   private final Iterator<T> iter_;
   private final Predicate<T> pred_;
   private T next_;

@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 
-public abstract class MangoRangeBase<T> implements MangoRange<T> {
+abstract class MangoRangeBase<T> implements MangoRange<T> {
   public abstract T next();
   public abstract boolean hasNext();
 

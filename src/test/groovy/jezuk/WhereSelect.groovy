@@ -1,4 +1,6 @@
-package jezuk.mango
+package jezuk
+
+import jezuk.mango.*
 
 class WhereSelect extends spock.lang.Specification {
   def "filter and upper case"() {

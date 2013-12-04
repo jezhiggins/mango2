@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 
-public class SelectRange<T, U> extends MangoRangeBase<U> {
+class SelectRange<T, U> extends MangoRangeBase<U> {
   private final Iterator<T> iter_;
   private final Function<T, U> fn_;
 

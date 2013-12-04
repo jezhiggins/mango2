@@ -1,4 +1,7 @@
-package jezuk.mango
+package jezuk
+
+import jezuk.mango.Mango
+import jezuk.mango.Generator
 
 class MangoGenerate extends spock.lang.Specification {
   def "strings"() {

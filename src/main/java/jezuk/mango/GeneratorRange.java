@@ -1,6 +1,6 @@
 package jezuk.mango;
 
-public class GeneratorRange<T> extends MangoRangeBase<T> {
+class GeneratorRange<T> extends MangoRangeBase<T> {
   private final Generator<T> gen_;
 
   GeneratorRange(final Generator<T> gen) {

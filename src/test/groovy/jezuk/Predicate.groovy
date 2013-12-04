@@ -1,4 +1,6 @@
-package jezuk.mango
+package jezuk
+
+import jezuk.mango.Predicate
 
 class PredicateTest extends spock.lang.Specification {
   def "create and exercise a 'even integer' predicate"() {

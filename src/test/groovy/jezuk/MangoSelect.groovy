@@ -1,4 +1,7 @@
-package jezuk.mango
+package jezuk
+
+import jezuk.mango.Mango
+import jezuk.mango.Function
 
 class MangoSelect extends spock.lang.Specification {
   def "uppercase"() {

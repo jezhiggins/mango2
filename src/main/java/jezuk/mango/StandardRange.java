@@ -2,7 +2,7 @@ package jezuk.mango;
 
 import java.util.Iterator;
 
-public class StandardRange<T> extends MangoRangeBase<T> {
+class StandardRange<T> extends MangoRangeBase<T> {
   private final Iterator<T> iter_;
 
   StandardRange(final Iterator<T> iterator) {
