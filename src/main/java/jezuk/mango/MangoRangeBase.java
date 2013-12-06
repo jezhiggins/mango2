@@ -16,7 +16,6 @@ abstract class MangoRangeBase<T> implements MangoRange<T> {
   public <U> MangoRange<U> select(final Function<T, U> fn) {
     return new SelectRange<T, U>(this, fn);
   } // where
-
   public MangoRange<T> take(final int count) {
     return takeWhile(Predicates.<T>Counter(count));
   } // take
@@ -27,15 +26,6 @@ abstract class MangoRangeBase<T> implements MangoRange<T> {
     return takeWhile(Predicates.Not(pred));
   } // takeUntil
 
-  public MangoRange<T> drop(final int count) {
-    return dropWhile(Predicates.<T>Counter(count));
-  } // drop
-  public MangoRange<T> dropWhile(final Predicate<T> pred) {
-    return new DropRange<T>(this, pred);
-  } // dropWhile
-  public MangoRange<T> dropUntil(final Predicate<T> pred) {
-    return dropWhile(Predicates.Not(pred));
-  } // dropUntil
 
   public List<T> toList() { return to(new ArrayList<T>()); }
   public List<T> to(final List<T> list) {

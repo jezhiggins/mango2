@@ -15,10 +15,6 @@ public interface MangoRange<T> extends Iterator<T> {
   MangoRange<T> takeWhile(final Predicate<T> pred);
   MangoRange<T> takeUntil(final Predicate<T> pred);
 
-  MangoRange<T> drop(final int count);
-  MangoRange<T> dropWhile(final Predicate<T> pred);
-  MangoRange<T> dropUntil(final Predicate<T> pred);
-
   public List<T> toList();
   public List<T> to(List<T> list);
   public void to(Sink<T> sink);
