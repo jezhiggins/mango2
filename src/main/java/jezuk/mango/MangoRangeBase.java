@@ -37,6 +37,18 @@ abstract class MangoRangeBase<T> implements MangoRange<T> {
     return dropWhile(Predicates.Not(pred));
   } // dropUntil
 
+  public T accumulate(final BinaryOperation<T> accumulator) {
+    if (!hasNext())
+      return null;
+    return accumulate(next(), accumulator);
+  } // accumulate
+  public T accumulate(final T initial, final BinaryOperation<T> accumulator) {
+    T acc = initial;
+    while (hasNext()) 
+      acc = accumulator.execute(acc, next());
+    return acc;
+  } // accumulate
+
   public List<T> toList() { return to(new ArrayList<T>()); }
   public List<T> to(final List<T> list) {
     to(Mango.<T>to(list));
