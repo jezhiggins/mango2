@@ -40,4 +40,12 @@ class MangoTest extends spock.lang.Specification {
     then:
       range.toList() == ['one', 'two', 'three']
   }
+
+  def "MangoRange from array of objects"() {
+    when:
+      def range = Mango.from('pig', 'pog', 'frog')
+
+    then:
+      range.toList() == ['pig', 'pog', 'frog']
+  }
 }
