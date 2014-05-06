@@ -2,7 +2,7 @@ gradle.properties
 .gradle
 build
 *.class
-
+*.*~
 # Package Files #
 *.jar
 *.war
