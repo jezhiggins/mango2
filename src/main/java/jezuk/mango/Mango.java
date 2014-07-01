@@ -1,6 +1,7 @@
 package jezuk.mango;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 public final class Mango {
   public static <T> MangoRange<T> from(final T... sources) {
@@ -8,7 +9,11 @@ public final class Mango {
   } // from
 
   public static <T> MangoRange<T> from(final Iterable<T> source) {
-    return new StandardRange<T>(source.iterator());
+    return from(source.iterator());
+  } // from
+
+  public static <T> MangoRange<T> from(final Iterator<T> source) {
+    return new StandardRange<T>(source);
   } // from
 
   public static <T> MangoRange<T> from(final Generator<T> source) {
