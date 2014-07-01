@@ -21,8 +21,12 @@ public final class Mango {
   } // from
 
   public static <T> MangoRange<T> empty() {
-      return new EmptyRange<T>();
+    return new EmptyRange<T>();
   } // empty
+
+  public static <T> MangoRange<T> concat(final MangoRange<? extends T>... ranges) {
+      return new FlatteningRange(ranges);
+  } // concat
 
   public static <T> Sink<T> to(final Collection<T> coll) {
     return new CollectionSink<T>(coll);
