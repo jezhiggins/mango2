@@ -5,44 +5,58 @@ import jezuk.mango.Predicate
 
 class MangoWhere extends spock.lang.Specification {
   def "filter a list"() {
-    when:
+    given:
       def findTwo = new Predicate<String>() {
         boolean test(String s) { return 'two' == s; }
       }
-      def range = Mango.from(['one', 'two', 'three']).where(findTwo)
 
-    then:
-      range.hasNext() == true
-      range.next() == 'two'
-      range.hasNext() == false
+    expect:
+      Mango.from(list).where(findTwo).toList() == result
+
+    where:
+      list                    | result
+      ['one', 'two', 'three'] | ['two']
+      ['one', 'three']        | []
+      []                      | []
+      ['one']                 | []
+      ['one', 'two', 'two']   | ['two', 'two']
   }
 
   def "filter everything"() {
-    when:
+    given:
       def nothing = new Predicate<String>() {
         boolean test(String s) { return false; }
       }
-      def range = Mango.from(['one', 'two', 'three']).where(nothing)
 
-    then:
-      range.hasNext() == false
+    expect:
+      Mango.from(list).where(nothing).toList() == result
+
+    where:
+      list                    | result
+      ['one', 'two', 'three'] | []
+      ['one', 'three']        | []
+      []                      | []
+      ['one']                 | []
   }
 
   def "filter nothing"() {
-    when:
+    given:
       def everything = new Predicate<String>() {
         boolean test(String s) { return true; }
       }
-      def range = Mango.from(['one', 'two', 'three']).where(everything)
 
-    then:
-      range.hasNext() == true
-      range.next() == 'one'
-      range.hasNext() == true
-      range.next() == 'two'
-      range.hasNext() == true
-      range.next() == 'three'
-      range.hasNext() == false
+    expect:
+      Mango.from(list).where(everything).toList() == result
+
+    where:
+      list                       | result
+      ['one', 'two', 'three']    | ['one', 'two', 'three'] 
+      ['one', 'three']           | ['one', 'three']
+      []                         | []
+      ['one']                    | ['one']
+      [null]                     | [null]
+      [null, null]               | [null, null]
+      ['one', null, 'two', null] | ['one', null, 'two', null]
   }
 
   def "filter and filter"() {
