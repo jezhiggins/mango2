@@ -48,4 +48,12 @@ class MangoTest extends spock.lang.Specification {
     then:
       range.toList() == ['pig', 'pog', 'frog']
   }
+
+  def "empty range"() {
+    when: 
+      def range = Mango.empty()
+
+    then:
+      range.hasNext() == false;
+  }
 }

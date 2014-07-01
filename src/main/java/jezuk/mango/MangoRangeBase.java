@@ -22,12 +22,12 @@ abstract class MangoRangeBase<T> implements MangoRange<T> {
     return new SelectRange<T, U>(this, fn);
   } // where
   public MangoRange<T> distinct() {
-      return new WhereRange<T>(this, new Predicate<T>() {
-         private Set<T> seen = new HashSet<T>();
-         public boolean test(T value) {
-            return seen.add(value);
-         }
-      });
+    return new WhereRange<T>(this, new Predicate<T>() {
+      private Set<T> seen = new HashSet<T>();
+      public boolean test(T value) {
+        return seen.add(value);
+      }
+    });
   } // distinct
 
   public MangoRange<T> take(final int count) {

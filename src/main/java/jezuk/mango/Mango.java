@@ -20,6 +20,10 @@ public final class Mango {
     return new GeneratorRange<T>(source);
   } // from
 
+  public static <T> MangoRange<T> empty() {
+      return new EmptyRange<T>();
+  } // empty
+
   public static <T> Sink<T> to(final Collection<T> coll) {
     return new CollectionSink<T>(coll);
   } // to
