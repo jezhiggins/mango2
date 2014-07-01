@@ -11,6 +11,7 @@ public interface MangoRange<T> extends Iterator<T> {
   MangoRange<T> where(final Predicate<T> pred);
   MangoRange<T> firstWhere(final Predicate<T> pred);
   <U> MangoRange<U> select(final Function<T, U> fn);
+  MangoRange<T> distinct();
 
   MangoRange<T> take(final int count);
   MangoRange<T> takeWhile(final Predicate<T> pred);

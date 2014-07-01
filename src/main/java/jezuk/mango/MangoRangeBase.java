@@ -3,6 +3,8 @@ package jezuk.mango;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
 
 abstract class MangoRangeBase<T> implements MangoRange<T> {
   public abstract T next();
@@ -19,6 +21,14 @@ abstract class MangoRangeBase<T> implements MangoRange<T> {
   public <U> MangoRange<U> select(final Function<T, U> fn) {
     return new SelectRange<T, U>(this, fn);
   } // where
+  public MangoRange<T> distinct() {
+      return new WhereRange<T>(this, new Predicate<T>() {
+         private Set<T> seen = new HashSet<T>();
+         public boolean test(T value) {
+            return seen.add(value);
+         }
+      });
+  } // distinct
 
   public MangoRange<T> take(final int count) {
     return takeWhile(Predicates.<T>Counter(count));
