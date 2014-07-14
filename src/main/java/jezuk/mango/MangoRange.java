@@ -26,6 +26,9 @@ public interface MangoRange<T> extends Iterator<T> {
 
   long count();
 
+  boolean allMatch(final Predicate<T> pred);
+  boolean anyMatch(final Predicate<T> pred);
+
   public List<T> toList();
   public List<T> to(List<T> list);
   public void to(Sink<T> sink);
