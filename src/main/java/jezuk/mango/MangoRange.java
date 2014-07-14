@@ -24,6 +24,8 @@ public interface MangoRange<T> extends Iterator<T> {
   T accumulate(final BinaryOperation<T> accumulator);
   T accumulate(final T initial, final BinaryOperation<T> accumulator);
 
+  long count();
+
   public List<T> toList();
   public List<T> to(List<T> list);
   public void to(Sink<T> sink);

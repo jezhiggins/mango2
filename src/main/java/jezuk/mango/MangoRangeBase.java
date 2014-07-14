@@ -62,6 +62,15 @@ abstract class MangoRangeBase<T> implements MangoRange<T> {
     return acc;
   } // accumulate
 
+  public long count() {
+    long c = 0;
+    while (hasNext()) {
+      ++c;
+      next();
+    } // while
+    return c;
+  } // count
+
   public List<T> toList() { return to(new ArrayList<T>()); }
   public List<T> to(final List<T> list) {
     to(Mango.<T>to(list));

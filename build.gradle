@@ -1,16 +1,15 @@
 apply plugin: 'java'
 apply plugin: 'groovy'
-//apply plugin: 'jacoco'
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-  testCompile ( 'org.codehaus.groovy:groovy-all:2.1.9',
-                'org.spockframework:spock-core:0.7-groovy-2.0' )
+  testCompile('org.codehaus.groovy:groovy-all:2.1.9',
+              'org.spockframework:spock-core:0.7-groovy-2.0')
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.0'
+  gradleVersion = '2.0'
 }
