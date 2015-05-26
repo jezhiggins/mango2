@@ -43,5 +43,26 @@ class Match extends spock.lang.Specification {
       [6,6,6,6,6,6,6,6,6,6] | true
       [6,6,6,6,6,6,6,6,6,0] | true
       [0,0,0,0,0,0,0,0,6,0] | true
-  }
+  } // any match test
+
+  def "none match test"() {
+    expect:
+      Mango.from(list).noneMatch(new Predicate<Integer>() {
+        public boolean test(Integer i) {
+          return i > 5;
+        }
+      }) == result
+
+    where:
+      list                  | result
+      [1,2,3,4,5,6,7,8,9,0] | false
+      [1,2,3]               | true
+      [1,2,3,4,5]           | true
+      []                    | true
+      [6,7,8,9,10]          | false
+      [6]                   | false
+      [6,6,6,6,6,6,6,6,6,6] | false
+      [6,6,6,6,6,6,6,6,6,0] | false
+      [0,0,0,0,0,0,0,0,6,0] | false
+  } // none match test
 }

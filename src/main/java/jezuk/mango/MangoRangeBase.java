@@ -108,6 +108,17 @@ abstract class MangoRangeBase<T> implements MangoRange<T> {
     return false;
   } // anyMatch
 
+  public boolean noneMatch(final Predicate<T> pred) {
+    if (!hasNext())
+      return true;
+
+    while (hasNext())
+      if (pred.test(next()))
+        return false;
+
+    return true;
+  } // noneMatch
+
   public List<T> toList() { return to(new ArrayList<T>()); }
   public List<T> to(final List<T> list) {
     to(Mango.<T>to(list));
