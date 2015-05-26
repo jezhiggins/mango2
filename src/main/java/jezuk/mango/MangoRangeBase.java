@@ -61,6 +61,9 @@ abstract class MangoRangeBase<T> implements MangoRange<T> {
       acc = accumulator.execute(acc, next());
     return acc;
   } // accumulate
+  public T first() {
+    return next();
+  } // first
 
   public long count() {
     long c = 0;

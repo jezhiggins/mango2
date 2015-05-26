@@ -23,6 +23,7 @@ public interface MangoRange<T> extends Iterator<T> {
 
   T accumulate(final BinaryOperation<T> accumulator);
   T accumulate(final T initial, final BinaryOperation<T> accumulator);
+  T first();
 
   long count();
 
