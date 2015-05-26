@@ -6,6 +6,7 @@ class ConcatTest extends spock.lang.Specification {
   def "concat 2 test"() {
     expect:
       Mango.concat(Mango.from(first), Mango.from(second)).toList() == result
+      Mango.concat(Mango.from(first)).concat(Mango.from(second)).toList() == result
 
     where:
       first    | second   | result
