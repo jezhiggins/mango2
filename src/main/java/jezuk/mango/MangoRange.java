@@ -9,9 +9,11 @@ public interface MangoRange<T> extends Iterator<T> {
   void remove();
 
   MangoRange<T> where(final Predicate<T> pred);
-  MangoRange<T> firstWhere(final Predicate<T> pred);
   <U> MangoRange<U> select(final Function<T, U> fn);
   MangoRange<T> distinct();
+  MangoRange<T> first();
+  MangoRange<T> firstWhere(final Predicate<T> pred);
+  MangoRange<T> last();
 
   MangoRange<T> take(final int count);
   MangoRange<T> takeWhile(final Predicate<T> pred);
@@ -23,7 +25,6 @@ public interface MangoRange<T> extends Iterator<T> {
 
   T accumulate(final BinaryOperation<T> accumulator);
   T accumulate(final T initial, final BinaryOperation<T> accumulator);
-  T first();
 
   long count();
 

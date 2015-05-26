@@ -15,9 +15,6 @@ abstract class MangoRangeBase<T> implements MangoRange<T> {
   public MangoRange<T> where(final Predicate<T> pred) {
     return new WhereRange<T>(this, pred);
   } // where
-  public MangoRange<T> firstWhere(final Predicate<T> pred) {
-    return where(pred).take(1);
-  } // where
   public <U> MangoRange<U> select(final Function<T, U> fn) {
     return new SelectRange<T, U>(this, fn);
   } // where
@@ -29,6 +26,21 @@ abstract class MangoRangeBase<T> implements MangoRange<T> {
       }
     });
   } // distinct
+  public MangoRange<T> first() {
+    return take(1);
+  } // first
+  public MangoRange<T> firstWhere(final Predicate<T> pred) {
+    return where(pred).take(1);
+  } // where
+  public MangoRange<T> last() {
+    if (!hasNext())
+      return Mango.empty();
+
+    T l = next();
+    while (hasNext())
+      l = next();
+    return Mango.from(l);
+  } // last
 
   public MangoRange<T> take(final int count) {
     return takeWhile(Predicates.<T>Counter(count));
@@ -61,9 +73,6 @@ abstract class MangoRangeBase<T> implements MangoRange<T> {
       acc = accumulator.execute(acc, next());
     return acc;
   } // accumulate
-  public T first() {
-    return next();
-  } // first
 
   public long count() {
     long c = 0;
