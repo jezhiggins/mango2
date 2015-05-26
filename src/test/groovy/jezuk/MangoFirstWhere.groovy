@@ -53,14 +53,14 @@ class MangoFirstWhere extends spock.lang.Specification {
                        firstWhere(lengthIs3).
                        firstWhere(beginsWithT);
 
-      def range2 = Mango.from(['one', 'two', 'three']).
+                       def range2 = Mango.from(['one', 'two', 'three', 'tum']).
                        firstWhere(beginsWithT).
                        firstWhere(lengthIs3);
 
     then:
       range.hasNext() == false
       range2.hasNext() == true
-      range2.next()
+      range2.next() = 'two'
       range2.hasNext() == false
   }
 }
