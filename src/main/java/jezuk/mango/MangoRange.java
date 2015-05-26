@@ -23,6 +23,10 @@ public interface MangoRange<T> extends Iterator<T> {
   MangoRange<T> dropWhile(final Predicate<T> pred);
   MangoRange<T> dropUntil(final Predicate<T> pred);
 
+  MangoRange<T> concat(final Iterator<T> iterator);
+  MangoRange<T> concat(final Iterable<T> iterable);
+  MangoRange<T> concat(final MangoRange<T> range);
+
   T accumulate(final BinaryOperation<T> accumulator);
   T accumulate(final T initial, final BinaryOperation<T> accumulator);
 

@@ -23,6 +23,9 @@ class ConcatTest extends spock.lang.Specification {
   def "concat 3 test"() {
     expect:
       Mango.concat(Mango.from(first), Mango.from(second), Mango.from(third)).toList() == result
+      Mango.from(first).concat(second).concat(third).toList() == result
+      Mango.from(first).concat(second.iterator()).concat(third.iterator()).toList() == result
+      Mango.from(first).concat(Mango.from(second).concat(Mango.from(third))).toList() == result
 
     where:
       first    | second   | third    | result

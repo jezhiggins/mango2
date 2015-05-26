@@ -65,6 +65,16 @@ abstract class MangoRangeBase<T> implements MangoRange<T> {
     return dropWhile(Predicates.Not(pred));
   } // dropUntil
 
+  public MangoRange<T> concat(final Iterator<T> iterator) {
+    return Mango.concat(this, Mango.from(iterator));
+  } // concat
+  public MangoRange<T> concat(final Iterable<T> iterable) {
+    return Mango.concat(this, Mango.from(iterable));
+  } // concat
+  public MangoRange<T> concat(final MangoRange<T> range) {
+    return Mango.concat(this, range);
+  } // concat
+
   public T accumulate(final BinaryOperation<T> accumulator) {
     if (!hasNext())
       return null;
