@@ -41,6 +41,9 @@ abstract class MangoRangeBase<T> implements MangoRange<T> {
       l = next();
     return Mango.from(l);
   } // last
+  public MangoRange<T> lastWhere(final Predicate<T> pred) {
+    return where(pred).last();
+  } // lastWhere
 
   public MangoRange<T> take(final int count) {
     return takeWhile(Predicates.<T>Counter(count));

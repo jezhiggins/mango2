@@ -3,13 +3,13 @@ package jezuk
 import jezuk.mango.Mango
 import jezuk.mango.Predicate
 
-class MangoFirstWhere extends spock.lang.Specification {
+class LastWhere extends spock.lang.Specification {
   def "filter a list"() {
     when:
       def findTwo = new Predicate<String>() {
         boolean test(String s) { return 'two' == s; }
       }
-      def range = Mango.from(['one', 'two', 'three', 'two']).firstWhere(findTwo)
+      def range = Mango.from(['one', 'two', 'three', 'two']).lastWhere(findTwo)
 
     then:
       range.hasNext() == true
@@ -22,7 +22,7 @@ class MangoFirstWhere extends spock.lang.Specification {
       def nothing = new Predicate<String>() {
         boolean test(String s) { return false; }
       }
-      def range = Mango.from(['one', 'two', 'three']).firstWhere(nothing)
+      def range = Mango.from(['one', 'two', 'three']).lastWhere(nothing)
 
     then:
       range.hasNext() == false
@@ -33,11 +33,11 @@ class MangoFirstWhere extends spock.lang.Specification {
       def everything = new Predicate<String>() {
         boolean test(String s) { return true; }
       }
-      def range = Mango.from(['one', 'two', 'three']).firstWhere(everything)
+      def range = Mango.from(['one', 'two', 'three']).lastWhere(everything)
 
     then:
       range.hasNext() == true
-      range.next() == 'one'
+      range.next() == 'three'
       range.hasNext() == false;
   }
 
@@ -49,18 +49,18 @@ class MangoFirstWhere extends spock.lang.Specification {
       def beginsWithT = new Predicate<String>() {
         boolean test(String s) { return s.charAt(0) == 't'; }
       }
-      def range = Mango.from(['one', 'two', 'three']).
-                       firstWhere(lengthIs3).
-                       firstWhere(beginsWithT);
+      def range = Mango.from(['three', 'two', 'one']).
+                       lastWhere(lengthIs3).
+                       lastWhere(beginsWithT);
 
       def range2 = Mango.from(['one', 'two', 'three', 'tum']).
-                       firstWhere(beginsWithT).
-                       firstWhere(lengthIs3);
+                       lastWhere(beginsWithT).
+                       lastWhere(lengthIs3);
 
     then:
       range.hasNext() == false
       range2.hasNext() == true
-      range2.next() == 'two'
+      range2.next() == 'tum'
       range2.hasNext() == false
   }
 }
