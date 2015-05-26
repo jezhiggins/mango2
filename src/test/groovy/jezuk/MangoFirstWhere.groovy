@@ -9,7 +9,7 @@ class MangoFirstWhere extends spock.lang.Specification {
       def findTwo = new Predicate<String>() {
         boolean test(String s) { return 'two' == s; }
       }
-      def range = Mango.from(['one', 'two', 'three']).firstWhere(findTwo)
+      def range = Mango.from(['one', 'two', 'three', 'two']).firstWhere(findTwo)
 
     then:
       range.hasNext() == true
@@ -53,7 +53,14 @@ class MangoFirstWhere extends spock.lang.Specification {
                        firstWhere(lengthIs3).
                        firstWhere(beginsWithT);
 
+      def range2 = Mango.from(['one', 'two', 'three']).
+                       firstWhere(beginsWithT).
+                       firstWhere(lengthIs3);
+
     then:
       range.hasNext() == false
+      range2.hasNext() == true
+      range2.next()
+      range2.hasNext() == false
   }
 }
