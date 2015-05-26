@@ -60,7 +60,7 @@ class MangoFirstWhere extends spock.lang.Specification {
     then:
       range.hasNext() == false
       range2.hasNext() == true
-      range2.next() = 'two'
+      range2.next() == 'two'
       range2.hasNext() == false
   }
 }
