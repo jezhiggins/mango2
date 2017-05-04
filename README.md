@@ -16,4 +16,4 @@ List<String> long_strings = Mango.from(strings).where(lengthOf15).toList();
 
 ```
 
-Mango2 is range-based version of my earlier [iterator library](https://github.com/jezhiggins/mango) and was [inspired by talks and articles by Steve Love and Andrei Alexandrescu](http://www.jezuk.co.uk/blog/2013/11/the-forest-road-reader-no-112.html). It is now [effectively obsoleted](http://www.jezuk.co.uk/blog/2013/11/the-forest-road-reader-no-113.html) by Java 8 Streams.
+Mango2 is range-based version of my earlier [iterator library](https://github.com/jezhiggins/mango) and was [inspired by talks and articles by Steve Love and Andrei Alexandrescu](http://www.jezuk.co.uk/blog/2013/11/the-forest-road-reader-no-112.html). It is now [largely obsoleted](http://www.jezuk.co.uk/blog/2013/11/the-forest-road-reader-no-113.html) by Java 8 Streams.
