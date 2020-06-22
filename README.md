@@ -7,7 +7,7 @@ Mango2 is a Java iterator and range library.
 import jezuk.mango.Mango;
 
 Predicate<String> lengthOf15 = new Predicate<String>() {
-  boolean test(String s) { return s.length() >= 15; }q
+  boolean test(String s) { return s.length() >= 15; }
 };
 
 List<String> string = get_a_bunch_of_strings();
